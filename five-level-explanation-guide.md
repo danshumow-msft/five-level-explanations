@@ -8,7 +8,7 @@ Use this guide to explain a research paper, technical project, or GitHub reposit
 2. **Teenager / curious beginner:** understand the mechanism and basic trade-offs.
 3. **College undergraduate:** connect the idea to relevant technical foundations.
 4. **Graduate student:** examine methods, assumptions, evidence, and reproducibility.
-5. **Expert:** assess the precise contribution, boundaries, and implications.
+5. **Expert:** assess what deserves expert attention, under which assumptions, and with what consequences.
 
 These are audience models, not judgments of intelligence or rigid age requirements. A specialist in one field may need a newcomer explanation of another.
 
@@ -54,6 +54,8 @@ Follow a concrete chain:
 
 Explain why the transformation helps, what information or resources it requires, and where it can fail. For theoretical work, the chain may run from assumptions through a key argument to a conclusion rather than through an executable process.
 
+Use a contrast or counterfactual to test the account: what nearby idea is this not, or what would change if an important condition failed? For example, binary search is not sorting; removing the ordering assumption can invalidate its answer. Choose checks that follow from what the audience has been taught, not obscure exceptions or trick questions.
+
 ### 5. Use analogies as scaffolding
 
 Choose a concrete analogy or running example that helps explain the central mechanism.
@@ -70,6 +72,8 @@ Do not stretch one analogy across unrelated components or treat an intuitive res
 Introduce terminology when it becomes useful, and define it before relying on it. Explain what an equation expresses before manipulating its symbols.
 
 Increase depth by adding mechanisms, assumptions, formal structure, and evidence, not merely longer words. At higher levels, spend less time on elementary background and more on the work's distinctive contribution.
+
+Make important refinements visible: "The previous level left out X. We now need X because Y." Identify what the simpler model retained and what the more precise account adds. A refinement must not contradict an earlier unqualified claim.
 
 Keep each level independently readable, even though the sequence is cumulative.
 
@@ -94,6 +98,22 @@ Match certainty to evidence. Distinguish a demonstrated limitation from a plausi
 Do not assume a feature is absent because it was not found in a limited inspection. Do not invent flaws to make the expert level sound sophisticated, or claim novelty without an adequate comparison to prior work.
 
 An explanation is not automatically an exhaustive audit or literature review.
+
+### 9. Make each level earn its place
+
+Identify the new explanatory capability each level provides: what can the reader now explain, predict, calculate, verify, or decide that the previous level did not enable?
+
+| Level | Typical new capability | Suitable diagnostic |
+|---|---|---|
+| 1 | Describe the problem and central cause-and-effect idea | Explain the idea in ordinary words |
+| 2 | Predict a simple new case | Change one input or condition and predict the result |
+| 3 | Work through the real mechanism or argument | Trace a case, calculate a result, or apply a definition |
+| 4 | Design meaningful verification and identify an assumption | Propose a test or proof check that could reveal a specific failure |
+| 5 | Judge applicability, alternatives, and implications | Explain which conditions or evidence would change an expert decision |
+
+These are planning aids, not mandatory exercises in every answer. If adjacent levels enable the same things, revise the progression. A longer explanation or more advanced vocabulary is not an understanding delta.
+
+Prefer prediction, application, comparison, and counterexamples over vocabulary recall. A proposed comprehension check is not evidence that a reader passed it; do not claim understanding without an actual response.
 
 ## Inspection Workflow
 
@@ -127,11 +147,15 @@ Use the map to distinguish background knowledge from the work's contribution, id
 
 Choose one running example and identify which details each level adds. Keep the problem, mechanism, and central conclusion stable.
 
+For each level, plan the new capability, the prerequisite or assumption being introduced, and a diagnostic with an expected answer. At each transition, identify the simpler model being refined and why the refinement matters. This can remain a short drafting outline rather than appearing in the final explanation.
+
 Include a limitation at every level in language suitable for that audience. Distribute important qualifications where they matter rather than hiding all caveats at the end.
 
 ### Step 5: Write and check
 
 Draft the five explanations, then check them against the sources and against one another. Correct misleading simplifications rather than relying on later sections to undo them.
+
+Apply the [evaluation rubric](./evaluation-rubric.md). Material inaccuracies and unsupported consequential claims block acceptance; strengths in style or structure cannot compensate for them. Check diagnostic answer notes against the sources too.
 
 ## What Each Level Should Accomplish
 
@@ -157,7 +181,7 @@ Draft the five explanations, then check them against the sources and against one
 - Introduce a meaningful trade-off or failure case.
 - Use simple arithmetic or diagrams when they clarify the mechanism.
 
-**Success test:** The reader can trace a simple case and explain why the approach is useful.
+**Success test:** The reader can predict a simple changed case and explain why the approach is useful.
 
 ### Level 3: College Undergraduate
 
@@ -189,9 +213,9 @@ Do not manufacture an experimental protocol for purely theoretical work or deman
 
 ### Level 5: Expert
 
-**Reader's question:** "What exactly is new, when does it hold, and what follows from it?"
+**Reader's question:** "What deserves expert attention, under which assumptions, and with what consequences?"
 
-- State the precise contribution and its relationship to established approaches.
+- State the precise contribution or expert-relevant distinction and its relationship to established approaches.
 - Analyze the decisive assumptions, bottlenecks, or proof obligations.
 - Distinguish asymptotic claims from practical performance when relevant.
 - Examine generality, robustness, scaling, and known failure boundaries.
@@ -199,7 +223,28 @@ Do not manufacture an experimental protocol for purely theoretical work or deman
 
 Use domain terminology where it improves precision. Expert depth comes from discriminating analysis, not dense notation or performative skepticism. If prior work was not inspected sufficiently to assess novelty, say so.
 
-**Success test:** The reader can assess the contribution's significance and boundaries, and identify what evidence would change that assessment.
+Adapt the expert question to the subject:
+
+- **Research:** What is new, which proof obligations or comparisons matter, and what does the evidence establish?
+- **Software or engineering:** Which correctness contracts, workloads, resource costs, and operational constraints determine whether this is a good choice?
+- **Established concepts:** Which subtle distinctions, generalizations, or boundaries change how an expert uses the concept?
+
+Do not force a novelty claim onto a mature library, standard algorithm, or established idea.
+
+**Success test:** The reader can assess significance or applicability, explain the decisive boundaries, and identify what evidence would change that assessment.
+
+## Static and Interactive Modes
+
+**Static is the default:** deliver all five explanations. Optionally include short comprehension checks with answer notes kept separate, so readers can try before looking. Do not require a conversation before completing an otherwise clear request.
+
+**Interactive is opt-in:** when the reader requests tutoring or adaptation:
+
+1. Ask one focused question about their current model or relevant background.
+2. Explain at an appropriate starting level, using the answer rather than an age label to calibrate.
+3. Invite a prediction, application, or teach-back.
+4. Use the actual response to identify a specific gap and adapt the next explanation.
+
+If a response reveals a gap, revise the relevant model or example before adding complexity. Do not invent learner answers or infer mastery from polished prose, agreement, or a self-reported feeling of clarity. If the reader does not respond, label understanding as untested.
 
 ## Recommended Output Structure
 
@@ -227,7 +272,7 @@ Use domain terminology where it improves precision. Expert depth comes from disc
 [Assumptions, methods, evidence, and reproduction or verification requirements.]
 
 ## Level 5: Expert
-[Precise contribution, comparisons, boundaries, and implications.]
+[Expert-relevant contribution or distinction, comparisons, boundaries, and implications.]
 
 ## Evidence and Open Questions
 [Source-backed support for consequential claims and unresolved uncertainties.]
@@ -235,21 +280,28 @@ Use domain terminology where it improves precision. Expert depth comes from disc
 
 Place citations near the claims they support. Add a glossary, diagram, or vocabulary bridge only when it improves understanding. Adapt length to the subject and the reader's request; do not make every level equally long by default.
 
+For an annotated teaching example, show the understanding delta and a brief refinement bridge at each transition, plus checks and separate answer notes. In an ordinary explanation, integrate these naturally or use them only as drafting checks. See the complete [research-paper example](./examples/research-paper.md), [repository example](./examples/repository.md), and [weak counterexample](./examples/weak-explanation.md).
+
 ## Final Quality Checklist
 
 - [ ] All five levels explain the same central idea.
 - [ ] Each level adds understanding, not just vocabulary.
+- [ ] Each transition enables a new explanatory capability.
 - [ ] Simplifications remain compatible with the more precise explanations.
+- [ ] Important refinements explain what was omitted and why it now matters.
 - [ ] Analogies have an explicit mapping and a clear boundary.
 - [ ] Terms, symbols, and prerequisites are introduced before use.
 - [ ] The mechanism is explained, not replaced by a feature or component list.
+- [ ] A suitable contrast or changed-condition check tests the mechanism.
 - [ ] Consequential claims have traceable support.
 - [ ] Author claims, inspected evidence, execution results, and inference remain distinct.
 - [ ] Planned capabilities are not presented as implemented or verified.
 - [ ] Limitations and uncertainty are visible at the levels where they matter.
 - [ ] Inspection and execution limits are disclosed.
-- [ ] The reader can answer the success question for each level.
+- [ ] The expert section fits the subject without forcing novelty or irrelevant formalism.
+- [ ] Diagnostics and answer notes are appropriate to what each level taught.
+- [ ] Proposed success tests are not presented as observed reader understanding.
 
 ## Reusable Request
 
-> Apply this guide to [paper, project, or repository]. Explain the same central idea at all five levels, using a consistent running example where useful. Focus on [question or topic]. Ground consequential claims in inspected sources, preserve important qualifications, and distinguish source claims, implementation evidence, and actual verification. State access limits and unresolved questions explicitly.
+> Apply this guide to [paper, project, or repository]. Explain the same central idea at all five levels, using a consistent running example where useful. Focus on [question or topic]. Make each level enable a new explanatory capability, bridge important refinements, and test the mechanism with a suitable contrast or changed condition. Ground consequential claims in inspected sources, preserve important qualifications, and distinguish source claims, implementation evidence, and actual verification. State access limits and unresolved questions explicitly. Deliver a static explanation unless I request interactive tutoring.

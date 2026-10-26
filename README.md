@@ -12,7 +12,7 @@ The goal is **the same central idea, explained with increasing precision**: not 
 | 2 | Teenager / curious beginner | How does it actually work? |
 | 3 | College undergraduate | How does this connect to technical foundations? |
 | 4 | Graduate student | What would I need to reproduce, evaluate, or extend this? |
-| 5 | Expert | What exactly is new, when does it hold, and what follows from it? |
+| 5 | Expert | What deserves expert attention, under which assumptions, and with what consequences? |
 
 These are models of familiarity with a subject, not rigid age requirements or judgments of intelligence.
 
@@ -30,6 +30,9 @@ Focus on [the central contribution, a particular mechanism, or a question].
 
 Explain the same central idea at all five levels. Use a consistent running
 example where useful, and preserve important qualifications at every level.
+Make each level enable a new explanatory capability, bridge important
+refinements, and use a suitable contrast or changed condition to test the
+mechanism.
 
 Ground consequential claims in sources you actually inspect. Distinguish
 author claims, implementation evidence, and actual verification. State what
@@ -101,11 +104,25 @@ or run code unless I explicitly ask.
 - A short statement of the sources, version, and inspection limits.
 - One recognizable problem and central idea carried through all five levels.
 - Progressively deeper mechanisms, assumptions, and evidence.
+- A new ability to explain, predict, apply, verify, or decide at each level.
+- Clear bridges showing what a simpler model left out and why it now matters.
 - Analogies that clarify the idea and acknowledge where they stop working.
 - Source-backed consequential claims and clearly labeled uncertainty.
 - An expert section that analyzes the contribution rather than simply adding jargon.
 
-The guide includes a recommended output template, success criteria for each level, and a final quality checklist.
+The guide includes a recommended output template, success criteria for each level, optional comprehension checks, and a final quality checklist. Use the [evaluation rubric](./evaluation-rubric.md) to check the result: accuracy and evidence are acceptance gates, not points that polished prose can make up for.
+
+## Annotated Examples
+
+Start with one complete example to see the rules in action:
+
+| Example | What it demonstrates |
+|---|---|
+| [Research paper: the illusion of explanatory depth](./examples/research-paper.md) | Explains one study at all five levels while distinguishing reported self-ratings, interpretation, and a proposed verification plan |
+| [Repository: Go's binary-search workflow](./examples/repository.md) | Traces a real API through its implementation and inspected tests, with a worked case and an ordering counterexample |
+| [Weak explanation and repair](./examples/weak-explanation.md) | Shows why five headings and increasingly technical words do not produce five levels, even after a factual error is fixed |
+
+The complete examples include progression annotations, refinement bridges, comprehension checks, and separate answer notes. The annotations are teaching aids, not required boilerplate for every explanation. They do not demonstrate that a reader has learned until the reader actually responds.
 
 ## Useful Follow-Ups
 
@@ -124,15 +141,33 @@ Identify the most consequential assumption and explain what changes
 if it does not hold. Separate source-backed conclusions from speculation.
 ```
 
+```text
+Show what each level lets me do that the previous level did not. At each
+transition, explain which simplification you refine and why it matters.
+```
+
+Static explanations are the default. For adaptive tutoring instead, request:
+
+```text
+Use the guide interactively. Start with one focused question about my
+current understanding, explain at an appropriate level, then ask me to
+predict or apply something. Adapt to my actual answers rather than
+assuming I understood. Do not give all five levels at once.
+```
+
 ## Limits
 
 This framework improves the structure of an explanation; it does not guarantee factual correctness. Check important claims against the original sources.
 
 An explanation is not an exhaustive code audit, independent reproduction, or comprehensive literature review. A README is not proof of implementation, and passing tests are not proof of universal correctness.
 
+The five levels are an editorial framework, not a validated developmental scale or a claim that five stages are optimal for learning. A clear explanation, an author's self-check, and a reader's demonstrated understanding are different things.
+
 ## Background
 
 Inspired by the general "five levels of explanation" format popularized by series such as [WIRED's 5 Levels](https://www.wired.com/video/series/5-levels/). This is an independent guide and is not affiliated with or endorsed by WIRED.
+
+See the rubric's [sources and design rationale](./evaluation-rubric.md#sources-and-design-rationale) for concrete explanation techniques and the limits of the supporting evidence.
 
 ## License
 
